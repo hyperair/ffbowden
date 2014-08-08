@@ -12,3 +12,5 @@ alublock_dimensions = [15 * length_mm, 15 * length_mm];
 backplate_thickness = 5 * length_mm;
 topplate_thickness = 5 * length_mm;
 strut_thickness = 10 * length_mm;
+
+heatbreaktube_dia = M6;
