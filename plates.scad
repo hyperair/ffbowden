@@ -2,7 +2,14 @@ include <options.scad>
 include <MCAD/units/metric.scad>
 include <MCAD/motors/stepper.scad>
 use <MCAD/shapes/polyhole.scad>
+use <MCAD/shapes/triangles.scad>
 use <MCAD/fasteners/nuts_and_bolts.scad>
+
+module poly_bolt_hole (size, length, tolerance=+0.0001, proj=-1)
+{
+    polyhole (d=size, h=length + tolerance);
+    nutHole (size=size, tolerance=tolerance);
+}
 
 module backplate ()
 {
@@ -26,13 +33,11 @@ module backplate ()
                     -epsilon
                 ]
             )
-            union () {
-                polyhole (d=screw_size, h=backplate_thickness + epsilon * 2);
 
-                translate ([0, 0, backplate_thickness + epsilon * 2])
-                mirror (Z)
-                nutHole (size=screw_size, tolerance=0);
-            }
+            translate ([0, 0, backplate_thickness + epsilon])
+            mirror (Z)
+            poly_bolt_hole (size=screw_size,
+                length=backplate_thickness + epsilon * 2);
         }
     }
 }
@@ -45,5 +50,50 @@ module topplate ()
     difference () {
         translate ([-width/2, 0, 0])
         cube ([width, depth, topplate_thickness]);
+
+        translate ([0, depth/2, -epsilon] + concat (heatbreaktube_offset, [0]))
+        polyhole (d=heatbreaktube_dia, h=topplate_thickness + epsilon*2);
     }
 }
+
+module fan_strut ()
+{
+    height = lookup (NemaSideSize, stepper_model) - alublock_dimensions[1] -
+    topplate_thickness;
+
+    base_length = alublock_dimensions[0] + backplate_thickness;
+
+    difference () {
+        rotate (-90, Z)
+        mirror (X)
+        rotate (90, X)
+        translate ([0, 0, -strut_thickness/2])
+        union () {
+            translate ([strut_fanfacing_min_thickness, 0, 0])
+            triangle (
+                o_len = height,
+                a_len = base_length - strut_fanfacing_min_thickness,
+                depth = strut_thickness
+            );
+
+            cube ([strut_fanfacing_min_thickness, height, strut_thickness]);
+        }
+
+        translate (
+            [
+                0,
+                strut_fanfacing_min_thickness + 3 * length_mm,
+                motorScrewSpacing (stepper_model) - topplate_thickness -
+                alublock_dimensions[1] / 2
+            ]
+        )
+        rotate (90, X)
+        rotate (90, Z)
+        poly_bolt_hole (
+            size = screw_size,
+            length = base_length
+        );
+    }
+}
+
+fan_strut ();
