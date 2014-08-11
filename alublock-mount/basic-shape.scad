@@ -6,7 +6,7 @@ use <MCAD/shapes/triangles.scad>
 use <MCAD/fasteners/nuts_and_bolts.scad>
 use <screwholes.scad>
 
-module basic_alublock_mount ()
+module basic_alublock_mount_shape ()
 {
     width = overall_width;
 
@@ -31,7 +31,7 @@ module basic_alublock_mount ()
 module alublock_mount ()
 {
     difference () {
-        basic_alublock_mount ();
+        basic_alublock_mount_shape ();
 
         // screw holes
         translate ([overall_width / 2, 0, screw_base_offset])
