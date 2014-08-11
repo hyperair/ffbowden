@@ -41,7 +41,7 @@ module alublock_mount ()
 
         // cooling tube hole
         translate (concat (heatbreaktube_offset, [0]))
-        translate ([overall_width / 2, overall_depth / 2, 0])
+        translate ([overall_width / 2, alublock_dimensions[0] / 2, 0])
         polyhole (d=heatbreaktube_dia, h=100 * length_mm);
     }
 }
