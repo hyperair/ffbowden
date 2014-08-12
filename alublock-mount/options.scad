@@ -33,6 +33,6 @@ mount_bottom = max (screw_base_offset - 1.5 * screw_size, 0);
 strut_height = overall_height + mount_bottom - topplate_surface_z;
 
 heatbreaktube_position = (
-    [overall_width / 2, alublock_dimensions[1] / 2, 0] +
+    [overall_width / 2, alublock_dimensions[0] / 2, 0] +
     concat (heatbreaktube_offset, [0])
 );
