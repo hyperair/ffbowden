@@ -90,7 +90,7 @@ module bowden_trap ()
             polyhole (d=bowden_tube_diameter, h=100 * length_mm);
 
             translate ([-escapement_width / 2, 0, 0])
-            cube ([escapement_width * 0.8, bowden_tube_diameter * 2,
+            cube ([escapement_width, bowden_tube_diameter * 2,
                     100 * length_mm]);
         }
     }
