@@ -16,7 +16,7 @@ screw_base_offset = 8;
 
 backplate_thickness = 5 * length_mm;
 topplate_thickness = 5 * length_mm;
-strut_thickness = 10 * length_mm;
+strut_thickness = 9 * length_mm;
 strut_fanfacing_min_thickness = 2 * length_mm;
 
 heatbreaktube_dia = M6;
