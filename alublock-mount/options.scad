@@ -22,7 +22,7 @@ strut_fanfacing_min_thickness = 2 * length_mm;
 heatbreaktube_dia = M6;
 
 // offset from middle
-heatbreaktube_offset = [0, 0];
+heatbreaktube_offset = [6.98, -alublock_dimensions[0] / 2 + 5];
 
 
 // globally calculated variables -- don't modify
