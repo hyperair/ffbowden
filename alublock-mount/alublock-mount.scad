@@ -86,7 +86,6 @@ module bowden_trap ()
             polyhole (d=bowden_tube_diameter, h=100 * length_mm);
 
             translate ([-bowden_tube_diameter * 0.8 / 2, 0, 0])
-            mirror (Y)
             cube ([bowden_tube_diameter * 0.8, bowden_tube_diameter * 2,
                     100 * length_mm]);
         }
