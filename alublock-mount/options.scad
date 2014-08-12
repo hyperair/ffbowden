@@ -2,7 +2,7 @@ include <MCAD/units/metric.scad>
 include <MCAD/motors/stepper.scad>
 
 bowden_tube_diameter = M4;
-bowden_trap_height = 13 * length_mm;
+bowden_trap_height = 15 * length_mm;
 
 stepper_model = Nema17;
 stepper_size = NemaLengthMedium;
