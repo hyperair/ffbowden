@@ -20,7 +20,7 @@ module basic_alublock_mount_shape ()
                 alublock_dimensions[1] + epsilon]);
     }
 
-    translate ([0, 0, topplate_surface_z]) {
+    translate ([0, 0, topplate_surface_z - epsilon]) {
         fan_strut ();
 
         translate ([width - strut_thickness, 0, 0])
