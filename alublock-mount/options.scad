@@ -9,10 +9,10 @@ stepper_size = NemaLengthMedium;
 screw_size = M3;
 
 // [x,y] from side view
-alublock_dimensions = [15 * length_mm, 15 * length_mm];
+alublock_dimensions = [15 * length_mm, 12.5 * length_mm];
 
 // distance between alublock base to centre point of screwholes
-screw_base_offset = alublock_dimensions[0] / 2;
+screw_base_offset = 8;
 
 backplate_thickness = 5 * length_mm;
 topplate_thickness = 5 * length_mm;
