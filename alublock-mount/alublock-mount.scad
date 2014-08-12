@@ -44,7 +44,7 @@ module alublock_mount ()
         polyhole (d=heatbreaktube_dia, h=100 * length_mm);
     }
 
-    translate (heatbreaktube_position + [0, 0, topplate_surface_z])
+    translate (heatbreaktube_position + [0, 0, topplate_surface_z - epsilon])
     bowden_trap ();
 }
 
