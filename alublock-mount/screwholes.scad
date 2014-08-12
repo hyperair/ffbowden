@@ -17,11 +17,11 @@ module motorscrewholes ()
     for (x=[-half_screwhole_dist, half_screwhole_dist])
     for (y=[0, screwhole_dist])
     translate ([x, y, -epsilon]) {
-        polyhole (d=screw_size, h=100 * length_mm);
+        polyhole (d=screw_size + 0.3 * length_mm, h=100 * length_mm);
 
         translate ([0, 0, lookup (y, nuthole_z_elevation)])
         scale ([1, 1, 100])
-        nutHole (size=screw_size);
+        nutHole (size=screw_size, clearance=0.3 * length_mm);
     }
 }
 
