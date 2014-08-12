@@ -68,7 +68,7 @@ module fan_strut ()
 
 module bowden_trap ()
 {
-    escapement_width = bowden_tube_diameter * 0.8;
+    escapement_width = bowden_tube_diameter;
 
     difference () {
         union () {
