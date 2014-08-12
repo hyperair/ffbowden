@@ -79,6 +79,7 @@ module bowden_trap ()
             );
 
             linear_extrude (bowden_trap_height)
+            translate ([-heatbreaktube_offset[0], 0, 0])
             square (
                 [overall_width - strut_thickness * 2, bowden_tube_diameter],
                 center = true
