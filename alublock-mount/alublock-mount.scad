@@ -68,6 +68,8 @@ module fan_strut ()
 
 module bowden_trap ()
 {
+    escapement_width = bowden_tube_diameter * 0.8;
+
     difference () {
         union () {
             cylinder (
@@ -85,8 +87,8 @@ module bowden_trap ()
         translate ([0, 0, -1 * length_mm]) {
             polyhole (d=bowden_tube_diameter, h=100 * length_mm);
 
-            translate ([-bowden_tube_diameter * 0.8 / 2, 0, 0])
-            cube ([bowden_tube_diameter * 0.8, bowden_tube_diameter * 2,
+            translate ([-escapement_width / 2, 0, 0])
+            cube ([escapement_width * 0.8, bowden_tube_diameter * 2,
                     100 * length_mm]);
         }
     }
