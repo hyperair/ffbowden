@@ -11,8 +11,9 @@ module basic_alublock_mount_shape ()
     width = overall_width;
 
     difference () {
-        // basic shapen
-        cube ([width, overall_depth, topplate_surface_z]);
+        // basic shape
+        translate ([0, 0, mount_bottom])
+        cube ([width, overall_depth, topplate_surface_z - mount_bottom]);
 
         translate ([-epsilon, -epsilon, -epsilon])
         cube ([width + epsilon * 2,

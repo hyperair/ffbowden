@@ -24,13 +24,13 @@ heatbreaktube_dia = M6;
 // offset from middle
 heatbreaktube_offset = [6.98, -alublock_dimensions[0] / 2 + 5];
 
-
 // globally calculated variables -- don't modify
-overall_width = lookup (NemaSideSize, stepper_model);
+overall_width = motorScrewSpacing (stepper_model) + 3 * screw_size;
 overall_depth = alublock_dimensions[0] + backplate_thickness;
 overall_height = overall_width;
 topplate_surface_z = topplate_thickness + alublock_dimensions[1];
-strut_height = overall_height - topplate_surface_z;
+mount_bottom = max (screw_base_offset - 1.5 * screw_size, 0);
+strut_height = overall_height + mount_bottom - topplate_surface_z;
 
 heatbreaktube_position = (
     [overall_width / 2, alublock_dimensions[1] / 2, 0] +
