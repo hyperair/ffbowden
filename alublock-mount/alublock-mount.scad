@@ -40,10 +40,12 @@ module alublock_mount ()
         motorscrewholes ();
 
         // cooling tube hole
-        translate (concat (heatbreaktube_offset, [0]))
-        translate ([overall_width / 2, alublock_dimensions[0] / 2, 0])
+        translate (heatbreaktube_position)
         polyhole (d=heatbreaktube_dia, h=100 * length_mm);
     }
+
+    translate (heatbreaktube_position + [0, 0, topplate_surface_z])
+    bowden_trap ();
 }
 
 module fan_strut ()
@@ -61,6 +63,33 @@ module fan_strut ()
         );
 
         cube ([strut_fanfacing_min_thickness, height, strut_thickness]);
+    }
+}
+
+module bowden_trap ()
+{
+    difference () {
+        union () {
+            cylinder (
+                d = bowden_tube_diameter * 2,
+                h = bowden_trap_height
+            );
+
+            linear_extrude (bowden_trap_height)
+            square (
+                [overall_width - strut_thickness * 2, bowden_tube_diameter],
+                center = true
+            );
+        }
+
+        translate ([0, 0, -1 * length_mm]) {
+            polyhole (d=bowden_tube_diameter, h=100 * length_mm);
+
+            translate ([-bowden_tube_diameter * 0.8 / 2, 0, 0])
+            mirror (Y)
+            cube ([bowden_tube_diameter * 0.8, bowden_tube_diameter * 2,
+                    100 * length_mm]);
+        }
     }
 }
 

@@ -2,6 +2,7 @@ include <MCAD/units/metric.scad>
 include <MCAD/motors/stepper.scad>
 
 bowden_tube_diameter = M4;
+bowden_trap_height = 10 * length_mm;
 
 stepper_model = Nema17;
 stepper_size = NemaLengthMedium;
@@ -15,7 +16,7 @@ screw_base_offset = alublock_dimensions[0] / 2;
 
 backplate_thickness = 5 * length_mm;
 topplate_thickness = 5 * length_mm;
-strut_thickness = 11 * length_mm;
+strut_thickness = 10 * length_mm;
 strut_fanfacing_min_thickness = 2 * length_mm;
 
 heatbreaktube_dia = M6;
@@ -30,3 +31,8 @@ overall_depth = alublock_dimensions[0] + backplate_thickness;
 overall_height = overall_width;
 topplate_surface_z = topplate_thickness + alublock_dimensions[1];
 strut_height = overall_height - topplate_surface_z;
+
+heatbreaktube_position = (
+    [overall_width / 2, alublock_dimensions[1] / 2, 0] +
+    concat (heatbreaktube_offset, [0])
+);
