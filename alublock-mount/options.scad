@@ -22,7 +22,10 @@ strut_fanfacing_min_thickness = 2 * length_mm;
 heatbreaktube_dia = M6;
 
 // offset from middle
-heatbreaktube_offset = [6.98, -alublock_dimensions[0] / 2 + 5];
+heatbreaktube_offset = [
+    6.98 * length_mm,
+    -alublock_dimensions[0] / 2 + 5 * length_mm
+];
 
 // globally calculated variables -- don't modify
 overall_width = motorScrewSpacing (stepper_model) + 3 * screw_size;
