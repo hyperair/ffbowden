@@ -74,7 +74,8 @@ module bowden_trap ()
         union () {
             cylinder (
                 d = bowden_tube_diameter * 2,
-                h = bowden_trap_height
+                h = bowden_trap_height,
+                $fs=0.1
             );
 
             linear_extrude (bowden_trap_height)
