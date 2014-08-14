@@ -19,7 +19,7 @@ topplate_thickness = 5 * length_mm;
 strut_thickness = 9 * length_mm;
 strut_fanfacing_min_thickness = 2 * length_mm;
 
-heatbreaktube_dia = M6;
+heatbreaktube_dia = M8;
 
 // offset from middle
 heatbreaktube_offset = [
