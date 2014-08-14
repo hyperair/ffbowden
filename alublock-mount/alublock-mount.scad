@@ -20,13 +20,6 @@ module basic_alublock_mount_shape ()
                 alublock_dimensions[0] + epsilon,
                 alublock_dimensions[1] + epsilon]);
     }
-
-    translate ([0, 0, topplate_surface_z - epsilon]) {
-        fan_strut ();
-
-        translate ([width - strut_thickness, 0, 0])
-        fan_strut ();
-    }
 }
 
 module alublock_mount ()
@@ -49,43 +42,16 @@ module alublock_mount ()
     bowden_trap ();
 }
 
-module fan_strut ()
-{
-    height = strut_height;
-    base_length = overall_depth;
-
-    rotate (90, Z)
-    rotate (90, X) {
-        translate ([strut_fanfacing_min_thickness, 0, 0])
-        triangle (
-            o_len = height,
-            a_len = base_length - strut_fanfacing_min_thickness,
-            depth = strut_thickness
-        );
-
-        cube ([strut_fanfacing_min_thickness, height, strut_thickness]);
-    }
-}
-
 module bowden_trap ()
 {
     escapement_width = 0.9 * bowden_tube_diameter;
 
     difference () {
-        union () {
-            cylinder (
-                d = bowden_tube_diameter * 2,
-                h = bowden_trap_height,
-                $fs=0.1
-            );
-
-            linear_extrude (bowden_trap_height)
-            translate ([-heatbreaktube_offset[0], 0, 0])
-            square (
-                [overall_width - strut_thickness * 2, bowden_tube_diameter * 2],
-                center = true
-            );
-        }
+        cylinder (
+            d = bowden_tube_diameter * 2.5,
+            h = bowden_trap_height,
+            $fs=0.1
+        );
 
         translate ([0, 0, -1 * length_mm]) {
             polyhole (d=bowden_tube_diameter, h=100 * length_mm);
