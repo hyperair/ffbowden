@@ -12,9 +12,10 @@ screw_size = M3;
 alublock_dimensions = [15 * length_mm, 12.5 * length_mm];
 
 // distance between alublock base to centre point of screwholes
-screw_base_offset = 8;
+screw_base_offset = 8 * length_mm;
 
-backplate_thickness = 5 * length_mm;
+backplate_thickness = 4 * length_mm;
+backplate_thickness_under_nut = 1 * length_mm;
 topplate_thickness = 5 * length_mm;
 
 heatbreaktube_dia = M8;
