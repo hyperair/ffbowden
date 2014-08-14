@@ -63,5 +63,6 @@ module bowden_trap ()
     }
 }
 
-rotate (90, X)
+translate ([0, 0, overall_height])
+rotate (-90, X)
 alublock_mount ();
