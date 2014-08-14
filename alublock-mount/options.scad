@@ -16,8 +16,6 @@ screw_base_offset = 8;
 
 backplate_thickness = 5 * length_mm;
 topplate_thickness = 5 * length_mm;
-strut_thickness = 9 * length_mm;
-strut_fanfacing_min_thickness = 2 * length_mm;
 
 heatbreaktube_dia = M8;
 
@@ -30,10 +28,8 @@ heatbreaktube_offset = [
 // globally calculated variables -- don't modify
 overall_width = motorScrewSpacing (stepper_model) + 3 * screw_size;
 overall_depth = alublock_dimensions[0] + backplate_thickness;
-overall_height = overall_width;
-topplate_surface_z = topplate_thickness + alublock_dimensions[1];
+overall_height = topplate_thickness + alublock_dimensions[1];
 mount_bottom = max (screw_base_offset - 1.5 * screw_size, 0);
-strut_height = overall_height + mount_bottom - topplate_surface_z;
 
 heatbreaktube_position = (
     [overall_width / 2, alublock_dimensions[0] / 2, 0] +

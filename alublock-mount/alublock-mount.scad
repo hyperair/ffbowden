@@ -13,7 +13,7 @@ module basic_alublock_mount_shape ()
     difference () {
         // basic shape
         translate ([0, 0, mount_bottom])
-        cube ([width, overall_depth, topplate_surface_z - mount_bottom]);
+        cube ([width, overall_depth, overall_height - mount_bottom]);
 
         translate ([-epsilon, -epsilon, -epsilon])
         cube ([width + epsilon * 2,
@@ -38,7 +38,7 @@ module alublock_mount ()
         polyhole (d=heatbreaktube_dia, h=100 * length_mm);
     }
 
-    translate (heatbreaktube_position + [0, 0, topplate_surface_z - epsilon])
+    translate (heatbreaktube_position + [0, 0, overall_height - epsilon])
     bowden_trap ();
 }
 
