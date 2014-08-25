@@ -31,15 +31,16 @@ module alublock_mount ()
         translate ([overall_width / 2, 0, screw_base_offset])
         mirror (Y)
         rotate (90, X)
-        motorscrewholes ();
+        motor_screwholes ();
 
         // cooling tube hole
         translate (heatbreaktube_position)
         polyhole (d=heatbreaktube_dia, h=100 * length_mm);
-    }
 
-    translate (heatbreaktube_position + [0, 0, overall_height - epsilon])
-    bowden_trap ();
+        // bowden trap screwholes
+        translate (heatbreaktube_position)
+        bowden_trap_screwholes ();
+    }
 }
 
 module bowden_trap ()
@@ -64,5 +65,5 @@ module bowden_trap ()
 }
 
 translate ([0, 0, overall_height])
-rotate (-90, X)
+rotate (180, X)
 alublock_mount ();

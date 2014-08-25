@@ -4,7 +4,7 @@ use <MCAD/motors/stepper.scad>
 use <MCAD/fasteners/nuts_and_bolts.scad>
 
 
-module motorscrewholes ()
+module motor_screwholes ()
 {
     screwhole_dist = motorScrewSpacing (stepper_model);
     half_screwhole_dist = screwhole_dist / 2;
@@ -22,4 +22,15 @@ module motorscrewholes ()
     }
 }
 
-motorscrewholes ();
+module bowden_trap_screwholes ()
+{
+    for (i=[1, -1])
+    translate ([i * bowden_trap_screw_spacing / 2, 0, 0]) {
+        polyhole (d=screw_size, h=100 * length_mm);
+
+        translate ([0, 0, alublock_dimensions[1] - epsilon])
+        nutHole (size=screw_size);
+    }
+}
+
+motor_screwholes ();
