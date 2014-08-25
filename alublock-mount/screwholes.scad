@@ -28,8 +28,12 @@ module bowden_trap_screwholes ()
     translate ([i * bowden_trap_screw_spacing / 2, 0, 0]) {
         polyhole (d=screw_size, h=100 * length_mm);
 
-        translate ([0, 0, alublock_dimensions[1] - epsilon])
-        nutHole (size=screw_size);
+        hull () {
+            translate ([0, 0, alublock_dimensions[1] - epsilon])
+            nutHole (size=screw_size);
+
+            nutHole (size=screw_size);
+        }
     }
 }
 
