@@ -4,6 +4,8 @@ include <MCAD/motors/stepper.scad>
 bowden_tube_diameter = M4;
 bowden_trap_height = 10 * length_mm;
 bowden_trap_screw_spacing = 15 * length_mm;
+bowden_trap_thickness = 2.5 * length_mm;
+bowden_trap_escapement_width = 0.9 * bowden_tube_diameter;
 
 stepper_model = Nema17;
 stepper_size = NemaLengthMedium;
