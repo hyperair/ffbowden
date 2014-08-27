@@ -43,27 +43,6 @@ module alublock_mount ()
     }
 }
 
-module bowden_trap ()
-{
-    escapement_width = 0.9 * bowden_tube_diameter;
-
-    difference () {
-        cylinder (
-            d = bowden_tube_diameter * 2.5,
-            h = bowden_trap_height,
-            $fs=0.1
-        );
-
-        translate ([0, 0, -1 * length_mm]) {
-            polyhole (d=bowden_tube_diameter, h=100 * length_mm);
-
-            translate ([-escapement_width / 2, 0, 0])
-            cube ([escapement_width, bowden_tube_diameter * 2,
-                    100 * length_mm]);
-        }
-    }
-}
-
 translate ([0, 0, overall_height])
 rotate (180, X)
 alublock_mount ();
