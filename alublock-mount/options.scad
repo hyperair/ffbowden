@@ -5,7 +5,10 @@ bowden_tube_diameter = M4;
 bowden_trap_height = 10 * length_mm;
 bowden_trap_screw_spacing = 15 * length_mm;
 bowden_trap_thickness = 2.5 * length_mm;
+bowden_trap_od = bowden_tube_diameter + bowden_trap_thickness * 2;
 bowden_trap_escapement_width = 0.9 * bowden_tube_diameter;
+bowden_trap_screwmount_height = 2 * length_mm;
+bowden_trap_screwmount_wall_thickness = 2 * length_mm;
 
 stepper_model = Nema17;
 stepper_size = NemaLengthMedium;
