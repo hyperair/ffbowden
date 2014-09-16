@@ -23,6 +23,9 @@ screw_base_offset = 8 * length_mm;
 backplate_thickness = 4 * length_mm;
 backplate_thickness_under_nut = 1 * length_mm;
 topplate_thickness = 5 * length_mm;
+sideplate_thickness = 5 * length_mm;
+sideplate_length = 15 * length_mm;
+sideplate_height = 5 * length_mm;
 
 heatbreaktube_dia = M8;
 

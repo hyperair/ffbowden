@@ -5,6 +5,7 @@ use <MCAD/shapes/polyhole.scad>
 use <MCAD/shapes/triangles.scad>
 use <MCAD/fasteners/nuts_and_bolts.scad>
 use <screwholes.scad>
+use <bowden-trap.scad>
 
 module basic_alublock_mount_shape ()
 {
@@ -22,10 +23,29 @@ module basic_alublock_mount_shape ()
     }
 }
 
-module alublock_mount ()
+function hbtpos_for_side (side = "left") = (
+    side == "left" ?
+    heatbreaktube_position :
+    side == "right" ?
+    [
+        overall_width - heatbreaktube_position[0],
+        heatbreaktube_position[1],
+        heatbreaktube_position[2]
+    ] :
+    "ERROR"
+);
+
+module alublock_mount (side="left")
 {
+    hbtpos = hbtpos_for_side (side);
+
     difference () {
-        basic_alublock_mount_shape ();
+        union () {
+            basic_alublock_mount_shape ();
+
+            if (side == "right")
+            sideplate ();
+        }
 
         // screw holes
         translate ([overall_width / 2, 0, screw_base_offset])
@@ -34,15 +54,60 @@ module alublock_mount ()
         motor_screwholes ();
 
         // cooling tube hole
-        translate (heatbreaktube_position)
+        translate (hbtpos)
         polyhole (d=heatbreaktube_dia, h=100 * length_mm);
 
         // bowden trap screwholes
-        translate (heatbreaktube_position)
+        translate (hbtpos)
         bowden_trap_screwholes ();
+    }
+
+    module sideplate ()
+    {
+        // endstop pusher
+        translate ([
+                overall_width,
+                alublock_dimensions[0],
+                motorWidth (model=stepper_model) - 17 * length_mm
+            ])
+        mirror (X)
+        cube ([
+                sideplate_thickness,
+                sideplate_length,
+                sideplate_height
+            ]);
+
+        // strut
+        translate ([
+                overall_width,
+                alublock_dimensions[0],
+                0,
+            ])
+        mirror (X)
+        hull () {
+            translate ([0, 0, motorWidth (model=stepper_model) - 17 * length_mm])
+            cube ([
+                    sideplate_thickness,
+                    backplate_thickness,
+                    sideplate_height
+                ]);
+
+            translate ([0, 0, overall_height])
+            cube ([
+                    sideplate_thickness * 2,
+                    backplate_thickness,
+                    epsilon
+                ]);
+        }
     }
 }
 
-translate ([0, 0, overall_height])
+// left mount
+translate ([0, -2 * length_mm, overall_height])
 rotate (180, X)
-alublock_mount ();
+alublock_mount ("left");
+
+// right mount
+translate ([0, 2 * length_mm, overall_width])
+rotate (90, Y)
+alublock_mount ("right");
