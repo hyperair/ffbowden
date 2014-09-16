@@ -45,3 +45,5 @@ heatbreaktube_position = (
     [overall_width / 2, alublock_dimensions[0] / 2, 0] +
     concat (heatbreaktube_offset, [0])
 );
+
+extruder_spacing = 33;          //33 on flashforge, 34 on original replicator
