@@ -26,12 +26,13 @@ topplate_thickness = 5 * length_mm;
 sideplate_thickness = 5 * length_mm;
 sideplate_length = 15 * length_mm;
 sideplate_height = 5 * length_mm;
+sideplate_z_offset_from_top = 18 * length_mm;
 
 heatbreaktube_dia = M8;
 
 // offset from middle
 heatbreaktube_offset = [
-    6.98 * length_mm,
+    6 * length_mm,
     -alublock_dimensions[0] / 2 + 5 * length_mm
 ];
 

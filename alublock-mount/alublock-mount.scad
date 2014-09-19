@@ -68,7 +68,7 @@ module alublock_mount (side="left")
         translate ([
                 overall_width,
                 alublock_dimensions[0],
-                motorWidth (model=stepper_model) - 17 * length_mm
+                motorWidth (model=stepper_model) - sideplate_z_offset_from_top
             ])
         mirror (X)
         cube ([
@@ -85,7 +85,11 @@ module alublock_mount (side="left")
             ])
         mirror (X)
         hull () {
-            translate ([0, 0, motorWidth (model=stepper_model) - 17 * length_mm])
+            translate ([
+                    0, 0,
+                    motorWidth (model=stepper_model) -
+                    sideplate_z_offset_from_top
+                ])
             cube ([
                     sideplate_thickness,
                     backplate_thickness,
