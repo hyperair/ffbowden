@@ -52,7 +52,7 @@ module sun_gear ()
             bore_diameter = 0,
             circles = 7,
             herringbone = true,
-            helix_angle = helix_angle
+            helix_angle = -helix_angle
         );
 
         translate ([0, 0, -epsilon])
