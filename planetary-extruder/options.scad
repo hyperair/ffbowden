@@ -2,8 +2,8 @@ include <MCAD/units/metric.scad>
 
 function mm (x) = length_mm (x);
 
-planet_teeth = 7;
-sun_teeth = 11;
+planet_teeth = 8;
+sun_teeth = 13;
 ring_teeth = sun_teeth + planet_teeth * 2;
 
 helix_angle = 40;
