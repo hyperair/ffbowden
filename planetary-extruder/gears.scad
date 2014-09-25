@@ -11,6 +11,8 @@ module planet_gear ()
             number_of_teeth = planet_teeth,
             circular_pitch = convertcp (circular_pitch),
             pressure_angle = pressure_angle,
+            backlash = 0,
+            clearance = mm (0.3),
 
             gear_thickness = planet_thickness,
             rim_thickness = planet_thickness,
@@ -43,6 +45,8 @@ module sun_gear ()
             number_of_teeth = sun_teeth,
             circular_pitch = convertcp (circular_pitch),
             pressure_angle = pressure_angle,
+            backlash = 0,
+            clearance = mm (0.3),
 
             gear_thickness = sun_thickness,
             rim_thickness = sun_thickness,
