@@ -1,4 +1,5 @@
 include <MCAD/units/metric.scad>
+include <MCAD/fasteners/nuts_and_bolts.scad>
 
 function mm (x) = length_mm (x);
 
@@ -39,6 +40,10 @@ sun_hub_d = sun_teeth * circular_pitch / PI * 0.8;
 carrier_wall_thickness = mm (2);
 carrier_arm_width = mm (5);
 carrier_thickness = mm (4);
+carrier_hub_thickness = METRIC_NUT_THICKNESS[motor_shaft_d] +
+    carrier_wall_thickness;
+
+motor_extra_standoff = mm (1);
 
 // error checking
 if ((sun_teeth + ring_teeth) % n_planets != 0)

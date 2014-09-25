@@ -17,7 +17,7 @@ module carrier ()
         carrier_wall_thickness);
 
     hub_d = METRIC_NUT_AC_WIDTHS[motor_shaft_d] + carrier_wall_thickness * 2;
-    hub_t = METRIC_NUT_THICKNESS[motor_shaft_d] + carrier_wall_thickness;
+    hub_t = carrier_hub_thickness;
 
     module basic_shape () {
         offset (delta=-2, join_type="round")
