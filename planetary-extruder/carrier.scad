@@ -17,7 +17,7 @@ module carrier ()
         carrier_wall_thickness);
 
     hub_d = METRIC_NUT_AC_WIDTHS[motor_shaft_d] + carrier_wall_thickness * 2;
-    hub_t = METRIC_NUT_THICKNESS[planet_bore] + carrier_thickness;
+    hub_t = METRIC_NUT_THICKNESS[motor_shaft_d] + carrier_wall_thickness;
 
     module basic_shape () {
         offset (delta=-2, join_type="round")
@@ -32,6 +32,7 @@ module carrier ()
     }
 
     module hub () {
+        translate ([0, 0, carrier_thickness - hub_t])
         cylinder (d=hub_d, h=hub_t);
     }
 
@@ -43,20 +44,25 @@ module carrier ()
         }
 
         // nuthole
-        translate ([0, 0, hub_t - METRIC_NUT_THICKNESS[motor_shaft_d]])
+        translate ([0, 0, carrier_thickness - METRIC_NUT_THICKNESS[motor_shaft_d]])
         scale ([1, 1, 100])
         nutHole (motor_shaft_d);
 
         // bore
-        translate ([0, 0, -epsilon])
+        translate ([0, 0, carrier_thickness - hub_t - epsilon])
         polyhole (d=motor_shaft_d, h=hub_t + epsilon * 2);
 
         // planet bearings
-        place_planets ()
-        translate ([0, 0, -epsilon])
-        polyhole (d = bearingOuterDiameter (planet_bearing),
-            h = hub_t + epsilon * 2);
+        place_planets () {
+            translate ([0, 0, -epsilon])
+            polyhole (d = bearingOuterDiameter (planet_bearing),
+                h = hub_t + epsilon * 2);
+
+            %bearing (model=planet_bearing);
+        }
     }
 }
 
+translate ([0, 0, carrier_thickness])
+mirror (Z)
 carrier ();
