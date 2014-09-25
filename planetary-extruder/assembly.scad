@@ -31,5 +31,5 @@ translate ([0, 0, -(nut_protrusion + carrier_thickness)]) {
     flat_nut (dia=motor_shaft_d);
 }
 
-translate ([0, 0, sun_hub_thickness + motor_extra_standoff])
+%translate ([0, 0, sun_hub_thickness + motor_extra_standoff])
 motor (model=Nema17);
