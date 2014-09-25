@@ -80,4 +80,28 @@ module sun_gear ()
     }
 }
 
+module place_planet (i)
+{
+    planet_displacement = gear_spacing (circular_pitch, sun_teeth,
+        planet_teeth);
+    half_tooth_angle = 360 / planet_teeth / 2;
+    gear_ratio = planet_teeth / sun_teeth;
+    angle = i / n_planets * 360;
+
+    rotate (i / n_planets * 360, Z)
+    translate ([planet_displacement, 0, 0])
+    rotate (180 + half_tooth_angle - angle * gear_ratio, Z)
+    children ();
+}
+
+module place_planets ()
+{
+    for (i = [0:n_planets])
+    place_planet (i)
+    children ();
+}
+
 sun_gear ();
+
+place_planets ()
+planet_gear ();
