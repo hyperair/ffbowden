@@ -26,7 +26,12 @@ sun_hub_thickness = sun_thickness + sun_collar_thickness;
 sun_hub_d = sun_teeth * circular_pitch / PI;
 
 n_planets = 3;
+// carrier settings
+carrier_wall_thickness = mm (2);
+carrier_arm_width = mm (5);
+carrier_thickness = mm (4);
 
+// error checking
 if ((sun_teeth + ring_teeth) % n_planets != 0)
 echo (str ("ERROR: sun_teeth + ring_teeth = ", sun_teeth + ring_teeth,
         " which is not divisible by ", n_planets));
