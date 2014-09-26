@@ -4,8 +4,8 @@ include <MCAD/fasteners/nuts_and_bolts.scad>
 function mm (x) = length_mm (x);
 
 // gear teeth ratio
-planet_teeth = 8;
-sun_teeth = 13;
+planet_teeth = 13;
+sun_teeth = 11;
 ring_teeth = sun_teeth + planet_teeth * 2;
 
 // bearings
