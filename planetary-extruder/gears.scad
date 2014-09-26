@@ -16,7 +16,7 @@ module planet_gear ()
 
             gear_thickness = planet_thickness,
             rim_thickness = planet_thickness,
-            rim_width = mm (5),
+            rim_width = rim_width,
             hub_thickness = planet_thickness,
             hub_diameter = planet_hub_d,
             bore_diameter = 0,
