@@ -43,7 +43,7 @@ carrier_thickness = mm (4);
 carrier_hub_thickness = METRIC_NUT_THICKNESS[motor_shaft_d] +
     carrier_wall_thickness;
 
-motor_extra_standoff = mm (1);
+motor_extra_standoff = mm (2);
 
 // error checking
 if ((sun_teeth + ring_teeth) % n_planets != 0)
