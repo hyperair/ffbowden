@@ -37,7 +37,7 @@ sun_hub_thickness = sun_thickness + sun_collar_thickness;
 sun_hub_d = sun_teeth * circular_pitch / PI * 0.8;
 
 // carrier settings
-carrier_wall_thickness = mm (2);
+carrier_wall_thickness = mm (4);
 carrier_arm_width = mm (5);
 carrier_thickness = mm (4);
 carrier_hub_thickness = METRIC_NUT_THICKNESS[motor_shaft_d] +
