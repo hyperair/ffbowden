@@ -20,15 +20,19 @@ place_planets () {
     flat_nut (dia=planet_bore);
 }
 
+annulus_gear ();
+
 translate ([0, 0, -(nut_protrusion + carrier_thickness)]) {
     carrier ();
 
-    %translate ([0, 0, carrier_thickness])
-    mirror (Z)
-    bolt (dia=motor_shaft_d, len=mm (30));
+    %rotate (carrier_angle, Z) {
+        translate ([0, 0, carrier_thickness])
+        mirror (Z)
+        bolt (dia=motor_shaft_d, len=mm (30));
 
-    %translate ([0, 0, -carrier_hub_thickness])
-    flat_nut (dia=motor_shaft_d);
+        translate ([0, 0, -carrier_hub_thickness])
+        flat_nut (dia=motor_shaft_d);
+    }
 }
 
 %translate ([0, 0, sun_hub_thickness + motor_extra_standoff])

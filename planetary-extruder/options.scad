@@ -45,13 +45,18 @@ carrier_hub_thickness = METRIC_NUT_THICKNESS[motor_shaft_d] +
 
 // annulus settings
 annulus_thickness = mm (10);
-
 motor_extra_standoff = mm (2);
+
+gear_ratio = 1 + annulus_teeth / sun_teeth;
+
+// animation
+sun_angle = $t * 360 * gear_ratio;
+carrier_angle = sun_angle / gear_ratio;
+annulus_angle = 0;
 
 // error checking
 if ((sun_teeth + annulus_teeth) % n_planets != 0)
 echo (str ("ERROR: sun_teeth + annulus_teeth = ", sun_teeth + annulus_teeth,
         " which is not divisible by ", n_planets));
 
-gear_ratio = (sun_teeth + annulus_teeth) / sun_teeth;
 echo (str ("Gear ratio = 1:", gear_ratio));

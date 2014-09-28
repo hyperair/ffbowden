@@ -40,6 +40,7 @@ module planet_gear ()
 
 module sun_gear ()
 {
+    rotate (sun_angle, Z)
     difference () {
         gear (
             number_of_teeth = sun_teeth,
@@ -85,12 +86,16 @@ module place_planet (i)
     planet_displacement = gear_spacing (circular_pitch, sun_teeth,
         planet_teeth);
     half_tooth_angle = 360 / planet_teeth / 2;
-    gear_ratio = sun_teeth / planet_teeth;
-    angle = $t * 360 + i / n_planets * 360;
+    planet_gear_ratio = sun_teeth / planet_teeth;
+    planet0_angle = 180 + half_tooth_angle; //planet orientation at 0°
+    orbit_angle = carrier_angle + i / n_planets * 360;
+    distance = sun_teeth * (orbit_angle - sun_angle) / 360;
+    add_planet_angle = distance / planet_teeth * 360;
+    planet_angle = planet0_angle + add_planet_angle;
 
-    rotate (angle, Z)
+    rotate (orbit_angle, Z)
     translate ([planet_displacement, 0, 0])
-    rotate (180 + half_tooth_angle + angle * gear_ratio, Z)
+    rotate (planet_angle, Z)
     children ();
 }
 
