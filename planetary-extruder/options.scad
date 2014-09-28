@@ -1,4 +1,5 @@
 use <MCAD/hardware/bearing.scad>
+include <MCAD/motors/stepper.scad>
 include <MCAD/units/metric.scad>
 include <MCAD/fasteners/nuts_and_bolts.scad>
 
@@ -59,6 +60,9 @@ output_mount_thickness = bearingWidth (output_bearing);
 sun_angle = $t * 360 * gear_ratio;
 carrier_angle = sun_angle / gear_ratio;
 annulus_angle = 0;
+
+// motor settings
+stepper_model = Nema17;
 
 // resolution
 $fa = 1;
