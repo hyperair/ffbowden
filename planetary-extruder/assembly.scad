@@ -1,5 +1,6 @@
 use <gears.scad>
 use <carrier.scad>
+use <under-carrier.scad>
 use <MCAD/hardware/bearing.scad>
 use <MCAD/fasteners/metric_fastners.scad>
 include <MCAD/motors/stepper.scad>
@@ -35,5 +36,12 @@ translate ([0, 0, -(nut_protrusion + carrier_thickness)]) {
     }
 }
 
-%translate ([0, 0, sun_hub_thickness + motor_extra_standoff])
+translate ([0, 0, sun_thickness + nut_protrusion]) {
+    under_carrier ();
+
+    place_planets ()
+    bearing (model=planet_bearing);
+}
+
+translate ([0, 0, sun_hub_thickness + motor_extra_standoff])
 motor (model=Nema17);
