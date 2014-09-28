@@ -101,7 +101,28 @@ module place_planets ()
     children ();
 }
 
+module annulus_gear ()
+{
+    gear (
+        number_of_teeth = annulus_teeth,
+        circular_pitch = convertcp (circular_pitch),
+        pressure_angle = pressure_angle,
+        backlash = 0,
+        clearance = mm (0.3),
+
+        gear_thickness = 0,
+        rim_thickness = annulus_thickness,
+        hub_diameter = 0,
+        herringbone = true,
+        helix_angle = helix_angle,
+        internal = true,
+        roundsize = 0
+    );
+}
+
 sun_gear ();
 
 place_planets ()
 planet_gear ();
+
+annulus_gear ();

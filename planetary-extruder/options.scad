@@ -6,7 +6,7 @@ function mm (x) = length_mm (x);
 // gear teeth ratio
 planet_teeth = 13;
 sun_teeth = 11;
-ring_teeth = sun_teeth + planet_teeth * 2;
+annulus_teeth = sun_teeth + planet_teeth * 2;
 
 // bearings
 planet_bearing = 623;
@@ -43,11 +43,15 @@ carrier_thickness = mm (4);
 carrier_hub_thickness = METRIC_NUT_THICKNESS[motor_shaft_d] +
     carrier_wall_thickness;
 
+// annulus settings
+annulus_thickness = mm (10);
+
 motor_extra_standoff = mm (2);
 
 // error checking
-if ((sun_teeth + ring_teeth) % n_planets != 0)
-echo (str ("ERROR: sun_teeth + ring_teeth = ", sun_teeth + ring_teeth,
+if ((sun_teeth + annulus_teeth) % n_planets != 0)
+echo (str ("ERROR: sun_teeth + annulus_teeth = ", sun_teeth + annulus_teeth,
         " which is not divisible by ", n_planets));
 
-echo (str ("Gear ratio = 1:", (sun_teeth + ring_teeth) / sun_teeth));
+gear_ratio = (sun_teeth + annulus_teeth) / sun_teeth;
+echo (str ("Gear ratio = 1:", gear_ratio));
