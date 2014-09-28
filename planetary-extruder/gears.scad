@@ -110,21 +110,56 @@ module place_planets ()
 
 module annulus_gear ()
 {
-    gear (
-        number_of_teeth = annulus_teeth,
-        circular_pitch = convertcp (circular_pitch),
-        pressure_angle = pressure_angle,
-        backlash = 0,
-        clearance = mm (0.3),
+    difference () {
+        gear (
+            number_of_teeth = annulus_teeth,
+            circular_pitch = convertcp (circular_pitch),
+            pressure_angle = pressure_angle,
+            backlash = 0,
+            clearance = mm (0.3),
 
-        gear_thickness = 0,
-        rim_thickness = annulus_thickness,
-        hub_diameter = 0,
-        herringbone = true,
-        helix_angle = helix_angle,
-        internal = true,
-        roundsize = 0
-    );
+            gear_thickness = 0,
+            rim_thickness = annulus_thickness,
+            rim_width = annulus_rim_width,
+            hub_diameter = 0,
+            herringbone = true,
+            helix_angle = helix_angle,
+            internal = true,
+            roundsize = 0
+        );
+
+        place_annulus_screwholes ()
+        translate ([0, 0, -epsilon])
+        polyhole (d=screw_size, h=annulus_thickness + epsilon * 2);
+
+        place_annulus_screwholes (motor_mount=false)
+        translate ([0, 0, annulus_thickness + epsilon])
+        mirror (Z)
+        nutHole (size=screw_size);
+    }
+}
+
+module place_annulus_screwholes (motor_mount=true, non_motor_mount=true)
+{
+    annulus_pitch_d = annulus_teeth * circular_pitch / PI;
+    annulus_pitch_r = annulus_pitch_d / 2;
+
+    outer_radius = annulus_pitch_r + circular_pitch / PI + mm (0.3);
+    screw_orbit_radius = outer_radius + annulus_rim_width / 2;
+
+    // for motor mount
+    if (motor_mount)
+    for (angle=[45:90:360+45])
+    rotate (angle, Z)
+    translate ([screw_orbit_radius, 0, 0])
+    children ();
+
+    // for non-motor mount
+    if (non_motor_mount)
+    for (angle=[0:90:360])
+    rotate (angle, Z)
+    translate ([screw_orbit_radius, 0, 0])
+    children ();
 }
 
 sun_gear ();

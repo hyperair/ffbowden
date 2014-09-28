@@ -1,3 +1,4 @@
+use <MCAD/hardware/bearing.scad>
 include <MCAD/units/metric.scad>
 include <MCAD/fasteners/nuts_and_bolts.scad>
 
@@ -11,7 +12,6 @@ annulus_teeth = sun_teeth + planet_teeth * 2;
 // bearings
 planet_bearing = 623;
 output_bearing = 625;
-
 
 // common gear settings
 helix_angle = 40;
@@ -45,9 +45,15 @@ carrier_hub_thickness = METRIC_NUT_THICKNESS[motor_shaft_d] +
 
 // annulus settings
 annulus_thickness = mm (10);
+annulus_rim_width = mm (8);
+screw_size = M3;
 motor_extra_standoff = mm (2);
 
 gear_ratio = 1 + annulus_teeth / sun_teeth;
+
+// mount
+motor_mount_thickness = mm (4);
+output_mount_thickness = bearingWidth (output_bearing);
 
 // animation
 sun_angle = $t * 360 * gear_ratio;
