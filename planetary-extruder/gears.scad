@@ -21,7 +21,8 @@ module planet_gear ()
             hub_diameter = planet_hub_d,
             bore_diameter = 0,
             herringbone = true,
-            helix_angle = helix_angle
+            helix_angle = helix_angle,
+            roundsize = 0
         );
 
         // bore
@@ -57,7 +58,8 @@ module sun_gear ()
             bore_diameter = 0,
             circles = 7,
             herringbone = true,
-            helix_angle = -helix_angle
+            helix_angle = -helix_angle,
+            roundsize = 0
         );
 
         translate ([0, 0, -epsilon])
