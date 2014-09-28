@@ -54,6 +54,10 @@ sun_angle = $t * 360 * gear_ratio;
 carrier_angle = sun_angle / gear_ratio;
 annulus_angle = 0;
 
+// resolution
+$fa = 1;
+$fs = 0.4;
+
 // error checking
 if ((sun_teeth + annulus_teeth) % n_planets != 0)
 echo (str ("ERROR: sun_teeth + annulus_teeth = ", sun_teeth + annulus_teeth,
