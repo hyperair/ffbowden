@@ -38,12 +38,8 @@ translate ([0, 0, -(nut_protrusion + carrier_thickness)]) {
     }
 }
 
-translate ([0, 0, sun_thickness + nut_protrusion]) {
-    under_carrier ();
-
-    place_planets ()
-    bearing (model=planet_bearing);
-}
+translate ([0, 0, sun_thickness + nut_protrusion])
+under_carrier ();
 
 translate ([0, 0, sun_hub_thickness + motor_extra_standoff])
 union () {

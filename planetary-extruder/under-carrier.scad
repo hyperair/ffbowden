@@ -26,6 +26,9 @@ module under_carrier ()
             h = carrier_thickness + epsilon * 2
         );
     }
+
+    %place_planets ()
+    bearing (model=planet_bearing);
 }
 
 under_carrier ();
