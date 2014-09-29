@@ -55,6 +55,7 @@ annulus_pitch_r = annulus_pitch_d / 2;
 
 annulus_outer_radius = annulus_pitch_r + circular_pitch / PI + mm (0.3);
 annulus_screw_orbit_radius = annulus_outer_radius + annulus_rim_width / 2;
+annulus_rim_outer_radius = annulus_outer_radius + annulus_rim_width;
 
 
 gear_ratio = 1 + annulus_teeth / sun_teeth;

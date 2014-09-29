@@ -136,6 +136,10 @@ module annulus_gear ()
         translate ([0, 0, annulus_thickness + epsilon])
         mirror (Z)
         nutHole (size=screw_size);
+
+        // aligning line
+        translate ([annulus_rim_outer_radius - mm (0.5), 0, annulus_thickness * 0.1])
+        cube ([mm (10), mm (1), annulus_thickness * 0.8]);
     }
 }
 
