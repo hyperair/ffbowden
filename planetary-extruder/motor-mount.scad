@@ -65,10 +65,10 @@ module cross_arms ()
     hull ()
     rotate (angle, Z) {
         translate ([annulus_screw_orbit_radius, 0, 0])
-        circle (d=lookup (NemaEdgeRoundingRadius, stepper_model) * 1.5);
+        circle (d=lookup (NemaEdgeRoundingRadius, stepper_model));
 
         translate ([-annulus_screw_orbit_radius, 0, 0])
-        circle (d=lookup (NemaEdgeRoundingRadius, stepper_model) * 1.5);
+        circle (d=lookup (NemaEdgeRoundingRadius, stepper_model));
     }
 }
 
