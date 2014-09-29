@@ -2,7 +2,6 @@ include <MCAD/units/metric.scad>
 include <options.scad>
 use <MCAD/gears/involute_gears.scad>
 use <MCAD/shapes/polyhole.scad>
-include <MCAD/gears/stepper.scad>
 
 module spacer (id, width=-1, h=-1)
 {
