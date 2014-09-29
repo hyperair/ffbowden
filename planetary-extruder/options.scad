@@ -62,6 +62,7 @@ gear_ratio = 1 + annulus_teeth / sun_teeth;
 // mount
 motor_mount_thickness = mm (4);
 output_mount_thickness = bearingWidth (output_bearing);
+output_rim_width = mm (2);
 motor_mount_wall_thickness = mm (4);
 
 // animation
