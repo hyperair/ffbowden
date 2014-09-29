@@ -2,7 +2,13 @@ INKSCAPEDIR = /usr/share/inkscape/extensions/
 DXF_OUTLINES = $(INKSCAPEDIR)/dxf_outlines.py
 OPENSCAD = openscad
 
-SCADFILES = planet-gears.scad sun-gear.scad carrier.scad under-carrier.scad
+SCADFILES =					\
+	planet-gears.scad			\
+	sun-gear.scad				\
+	carrier.scad				\
+	under-carrier.scad			\
+	spacers.scad
+
 STLFILES = $(SCADFILES:.scad=.stl)
 DEPFILES = $(addsuffix deps,$(SCADFILES))
 
