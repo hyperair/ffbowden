@@ -73,6 +73,14 @@ annulus_angle = 0;
 // motor settings
 stepper_model = Nema17;
 
+// spacer settings
+motor_mount_spacer_length = sun_collar_thickness +
+    lookup (NemaRoundExtrusionHeight, stepper_model) +
+    motor_extra_standoff - motor_mount_thickness;
+
+output_mount_spacer_length = nut_protrusion + carrier_hub_thickness +
+    METRIC_NUT_THICKNESS[motor_shaft_d];
+
 // resolution
 $fa = 1;
 $fs = 0.4;

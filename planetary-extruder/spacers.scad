@@ -17,15 +17,12 @@ module spacer (id, od=-1, h=-1)
 
 module motor_mount_spacer ()
 {
-    standoff = sun_collar_thickness +
-        lookup (NemaRoundExtrusionHeight, stepper_model) +
-        motor_extra_standoff - motor_mount_thickness;
-
-    spacer (id=M3 + mm (0.3), od=M3 * 2.5, h=standoff);
+    spacer (id=M3 + mm (0.3), od=M3 * 2.5, h=motor_mount_spacer_length);
 }
 
 module output_mount_spacer ()
 {
+    spacer (id=M3 + mm (0.3), od=M3 * 2.5, h=output_mount_spacer_length);
 }
 
 motor_mount_spacer ();

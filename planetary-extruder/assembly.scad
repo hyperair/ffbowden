@@ -38,7 +38,7 @@ translate ([0, 0, -(nut_protrusion + carrier_thickness)]) {
     }
 }
 
-translate ([0, 0, sun_thickness + nut_protrusion])
+*translate ([0, 0, sun_thickness + nut_protrusion])
 under_carrier ();
 
 translate ([0, 0, sun_hub_thickness + motor_extra_standoff])
@@ -49,8 +49,20 @@ union () {
     mirror (Z)
     motor_mount ();
 
-    translate ([0, 0, lookup (NemaRoundExtrusionHeight, stepper_model) - motor_mount_thickness])
+    translate ([
+            0, 0,
+            lookup (NemaRoundExtrusionHeight, stepper_model) -
+                motor_mount_thickness
+    ])
     mirror (Z)
     place_annulus_screwholes (motor_mount=true, non_motor_mount=false)
     motor_mount_spacer ();
 }
+
+translate ([0, 0, -output_mount_spacer_length])
+mirror (Z)
+output_mount ();
+
+mirror (Z)
+place_annulus_screwholes (motor_mount=false, non_motor_mount=true)
+output_mount_spacer ();
