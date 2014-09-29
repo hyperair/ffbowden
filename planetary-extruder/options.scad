@@ -50,11 +50,19 @@ annulus_rim_width = mm (8);
 screw_size = M3;
 motor_extra_standoff = mm (2);
 
+annulus_pitch_d = annulus_teeth * circular_pitch / PI;
+annulus_pitch_r = annulus_pitch_d / 2;
+
+annulus_outer_radius = annulus_pitch_r + circular_pitch / PI + mm (0.3);
+annulus_screw_orbit_radius = annulus_outer_radius + annulus_rim_width / 2;
+
+
 gear_ratio = 1 + annulus_teeth / sun_teeth;
 
 // mount
 motor_mount_thickness = mm (4);
 output_mount_thickness = bearingWidth (output_bearing);
+motor_mount_wall_thickness = mm (4);
 
 // animation
 sun_angle = $t * 360 * gear_ratio;

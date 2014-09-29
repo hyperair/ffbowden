@@ -141,24 +141,18 @@ module annulus_gear ()
 
 module place_annulus_screwholes (motor_mount=true, non_motor_mount=true)
 {
-    annulus_pitch_d = annulus_teeth * circular_pitch / PI;
-    annulus_pitch_r = annulus_pitch_d / 2;
-
-    outer_radius = annulus_pitch_r + circular_pitch / PI + mm (0.3);
-    screw_orbit_radius = outer_radius + annulus_rim_width / 2;
-
     // for motor mount
     if (motor_mount)
     for (angle=[45:90:360+45])
     rotate (angle, Z)
-    translate ([screw_orbit_radius, 0, 0])
+    translate ([annulus_screw_orbit_radius, 0, 0])
     children ();
 
     // for non-motor mount
     if (non_motor_mount)
     for (angle=[0:90:360])
     rotate (angle, Z)
-    translate ([screw_orbit_radius, 0, 0])
+    translate ([annulus_screw_orbit_radius, 0, 0])
     children ();
 }
 
