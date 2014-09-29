@@ -7,7 +7,8 @@ SCADFILES =					\
 	sun-gear.scad				\
 	carrier.scad				\
 	under-carrier.scad			\
-	spacers.scad
+	spacers.scad				\
+	motor-mount.scad
 
 STLFILES = $(SCADFILES:.scad=.stl)
 DEPFILES = $(addsuffix deps,$(SCADFILES))
