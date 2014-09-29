@@ -1,7 +1,6 @@
 module split_flip (
     bbox = [5000, 5000, 5000],
-    translation = [0, 0, 0],
-    normal = [0, 0, 1]
+    translation = [0, 0, 0]
 )
 {
     module bbox_ () {
@@ -9,14 +8,16 @@ module split_flip (
         cube (bbox);
     }
 
-    intersection () {
+    difference  () {
         children ();
+
+        translate ([0, 0, -bbox[2]])
         bbox_ ();
     }
 
     translate (translation)
-    intersection () {
-        mirror (normal)
+    rotate (180, [0, 1, 0])
+    difference () {
         children ();
 
         bbox_ ();
