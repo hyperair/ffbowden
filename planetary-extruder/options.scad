@@ -5,6 +5,9 @@ include <MCAD/fasteners/nuts_and_bolts.scad>
 
 function mm (x) = length_mm (x);
 
+// bowden settings (copied from alublock-mount)
+bowden_trap_screw_spacing = mm (15);
+
 // gear teeth ratio
 planet_teeth = 13;
 sun_teeth = 11;
@@ -60,19 +63,25 @@ annulus_rim_outer_radius = annulus_outer_radius + annulus_rim_width;
 
 gear_ratio = 1 + annulus_teeth / sun_teeth;
 
+// motor settings
+stepper_model = Nema17;
+
 // mount
 motor_mount_thickness = mm (4);
 output_mount_thickness = bearingWidth (output_bearing);
 output_rim_width = mm (2);
-motor_mount_wall_thickness = mm (4);
+motor_mount_wall_thickness = mm (2);
+motor_mount_arm_width = max (
+    lookup (NemaEdgeRoundingRadius, stepper_model),
+    METRIC_NUT_AC_WIDTHS[3] + motor_mount_wall_thickness * 2
+);
+
+echo (motor_mount_arm_width);
 
 // animation
 sun_angle = $t * 360 * gear_ratio;
 carrier_angle = sun_angle / gear_ratio;
 annulus_angle = 0;
-
-// motor settings
-stepper_model = Nema17;
 
 // spacer settings
 motor_mount_spacer_length = sun_collar_thickness +
@@ -81,6 +90,11 @@ motor_mount_spacer_length = sun_collar_thickness +
 
 output_mount_spacer_length = nut_protrusion + carrier_hub_thickness +
     METRIC_NUT_THICKNESS[motor_shaft_d];
+
+// output gear dimensions
+output_gear_od = mm (10);
+bowden_trap_mount_breadth = mm (4);
+bowden_trap_mount_thickness = mm (3);
 
 // resolution
 $fa = 1;
