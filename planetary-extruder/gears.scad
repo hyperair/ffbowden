@@ -139,7 +139,10 @@ module annulus_gear ()
         nutHole (size=screw_size, tolerance=nut_tolerance);
 
         // aligning line
-        translate ([annulus_rim_outer_radius - mm (0.5), 0, annulus_thickness * 0.1])
+        rotate (90/4, Z)        // get it away from the screwholes
+        translate ([annulus_rim_outer_radius - mm (1),
+                0,
+                annulus_thickness * 0.1])
         cube ([mm (10), mm (1), annulus_thickness * 0.8]);
     }
 }
