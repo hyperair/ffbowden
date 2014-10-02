@@ -34,7 +34,7 @@ module place_motor_screws ()
 module motor_screw_holes ()
 {
     place_motor_screws ()
-    polyhole (d=M3, h=-1);
+    polyhole (d=M3 + screwhole_tolerance, h=-1);
 }
 
 module motor_mount ()
@@ -56,12 +56,12 @@ module motor_mount ()
             motor_screw_holes ();
 
             place_annulus_screwholes ()
-            polyhole (d=M3 + mm (0.3), h=-1);
+            polyhole (d=M3 + screwhole_tolerance, h=-1);
         }
 
         translate ([0, 0, -epsilon])
         place_annulus_screwholes ()
-        nutHole (size=M3);
+        nutHole (size=M3, tolerance=nut_tolerance);
     }
 }
 

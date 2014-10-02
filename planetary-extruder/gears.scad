@@ -130,12 +130,13 @@ module annulus_gear ()
 
         place_annulus_screwholes ()
         translate ([0, 0, -epsilon])
-        polyhole (d=screw_size, h=annulus_thickness + epsilon * 2);
+        polyhole (d=screw_size + screwhole_tolerance,
+            h=annulus_thickness + epsilon * 2);
 
         place_annulus_screwholes (motor_mount=false)
         translate ([0, 0, annulus_thickness + epsilon])
         mirror (Z)
-        nutHole (size=screw_size);
+        nutHole (size=screw_size, tolerance=nut_tolerance);
 
         // aligning line
         translate ([annulus_rim_outer_radius - mm (0.5), 0, annulus_thickness * 0.1])

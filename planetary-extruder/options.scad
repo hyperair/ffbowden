@@ -96,6 +96,10 @@ output_gear_od = mm (10);
 bowden_trap_mount_breadth = mm (4);
 bowden_trap_mount_thickness = mm (3);
 
+// misc settings
+nut_tolerance = mm (0.3);
+screwhole_tolerance = mm (0.3);
+
 // resolution
 $fa = 1;
 $fs = 0.4;
