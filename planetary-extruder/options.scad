@@ -76,8 +76,6 @@ motor_mount_arm_width = max (
     METRIC_NUT_AC_WIDTHS[3] + motor_mount_wall_thickness * 2
 );
 
-echo (motor_mount_arm_width);
-
 // animation
 sun_angle = $t * 360 * gear_ratio;
 carrier_angle = sun_angle / gear_ratio;
