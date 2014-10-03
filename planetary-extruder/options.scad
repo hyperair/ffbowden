@@ -1,12 +1,15 @@
 use <MCAD/hardware/bearing.scad>
 include <MCAD/motors/stepper.scad>
 include <MCAD/units/metric.scad>
+include <MCAD/units/us.scad>
 include <MCAD/fasteners/nuts_and_bolts.scad>
 
 function mm (x) = length_mm (x);
+function inch (x) = length_inch (x);
 
 // bowden settings (copied from alublock-mount)
 bowden_trap_screw_spacing = mm (15);
+output_gear_elevation = mm (5);
 
 // gear teeth ratio
 planet_teeth = 13;
@@ -91,11 +94,19 @@ output_mount_spacer_length = nut_protrusion + carrier_hub_thickness +
 
 // output gear dimensions
 output_gear_od = mm (10);
+output_gear_hob_od = mm (6);
+filament_size = mm (1.75);
+
+// pov = from the bottom, with gear pointing up
+filament_path_offset = [
+    output_gear_hob_od + filament_size / 2,
+    mm (5)                      //elevation
+];
 bowden_trap_mount_breadth = mm (4);
-bowden_trap_mount_thickness = mm (3);
+bowden_trap_mount_thickness = mm (10);
 
 // misc settings
-nut_tolerance = mm (0.3);
+nut_tolerance = mm (0.1);
 screwhole_tolerance = mm (0.3);
 
 // resolution
