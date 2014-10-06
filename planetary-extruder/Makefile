@@ -8,7 +8,8 @@ SCADFILES =					\
 	carrier.scad				\
 	under-carrier.scad			\
 	spacers.scad				\
-	motor-mount.scad
+	motor-mount.scad			\
+	minimalistic-mk8-bowden.scad
 
 STLFILES = $(SCADFILES:.scad=.stl)
 DEPFILES = $(addsuffix deps,$(SCADFILES))
