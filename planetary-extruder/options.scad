@@ -104,7 +104,7 @@ filament_path_offset = [
 ];
 bowden_trap_mount_thickness = mm (3);
 bowden_trap_wall_thickness = mm (2);
-bowden_trap_thread_tap_d = mm (8.8);
+bowden_trap_thread_d = mm (9.6);
 bowden_trap_width = mm (10);
 
 // misc settings

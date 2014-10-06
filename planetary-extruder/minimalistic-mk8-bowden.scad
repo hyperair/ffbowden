@@ -3,7 +3,7 @@ use <MCAD/shapes/polyhole.scad>
 include <options.scad>
 
 module mk8_bowden_trap_mount (side="right") {
-    bowden_trap_barrel_od = (bowden_trap_thread_tap_d +
+    bowden_trap_barrel_od = (bowden_trap_thread_d +
         bowden_trap_wall_thickness * 2);
     overall_thickness = max (bowden_trap_barrel_od + filament_path_offset[1],
         bowden_trap_mount_thickness);
@@ -12,12 +12,13 @@ module mk8_bowden_trap_mount (side="right") {
         difference () {
             union () {
                 linear_extrude (height=bowden_trap_mount_thickness)
-                square ([motorWidth (stepper_model), motorWidth (stepper_model)],
+                square ([motorWidth (stepper_model),
+                        motorWidth (stepper_model)],
                     center=true);
 
                 place_filament_path (side)
                 cylinder (
-                    d = bowden_trap_thread_tap_d + bowden_trap_wall_thickness * 2,
+                    d = bowden_trap_thread_d + bowden_trap_wall_thickness * 2,
                     h = motorWidth (stepper_model),
                     center = true
                 );
@@ -33,7 +34,7 @@ module mk8_bowden_trap_mount (side="right") {
             );
 
             place_filament_path (side)
-            polyhole (d=bowden_trap_thread_tap_d, h=motorWidth (stepper_model));
+            polyhole (d=bowden_trap_thread_d, h=motorWidth (stepper_model));
         }
 
         linear_extrude (height=overall_thickness)
