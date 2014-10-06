@@ -2,7 +2,7 @@ use <motor-mount.scad>
 use <MCAD/shapes/polyhole.scad>
 include <options.scad>
 
-module mk8_bowden_trap_mount () {
+module mk8_bowden_trap_mount (side="right") {
     bowden_trap_barrel_od = (bowden_trap_thread_tap_d +
         bowden_trap_wall_thickness * 2);
     overall_thickness = max (bowden_trap_barrel_od + filament_path_offset[1],
@@ -15,7 +15,7 @@ module mk8_bowden_trap_mount () {
                 square ([motorWidth (stepper_model), motorWidth (stepper_model)],
                     center=true);
 
-                place_filament_path ()
+                place_filament_path (side)
                 cylinder (
                     d = bowden_trap_thread_tap_d + bowden_trap_wall_thickness * 2,
                     h = motorWidth (stepper_model),
@@ -32,7 +32,7 @@ module mk8_bowden_trap_mount () {
                 h = overall_thickness + epsilon * 2
             );
 
-            place_filament_path ()
+            place_filament_path (side)
             polyhole (d=bowden_trap_thread_tap_d, h=motorWidth (stepper_model));
         }
 
@@ -46,11 +46,16 @@ module mk8_bowden_trap_mount () {
     }
 }
 
-module place_filament_path ()
+module place_filament_path (side="right")
 {
-    translate ([filament_path_offset[0], 0, filament_path_offset[1]])
+    x_mul = (side == "left") ? 1 : -1;
+
+    translate ([x_mul * filament_path_offset[0], 0, filament_path_offset[1]])
     rotate (90, X)
     children ();
 }
 
-mk8_bowden_trap_mount ();
+mk8_bowden_trap_mount ("left");
+
+translate ([0, motorWidth (stepper_model) / 2, 0])
+mk8_bowden_trap_mount ("right");
