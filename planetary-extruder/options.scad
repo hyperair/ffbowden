@@ -100,10 +100,12 @@ filament_size = mm (1.75);
 // pov = from the bottom, with gear pointing up
 filament_path_offset = [
     output_gear_hob_od + filament_size / 2,
-    mm (5)                      //elevation
+    mm (6.825)                      //elevation
 ];
-bowden_trap_mount_breadth = mm (4);
-bowden_trap_mount_thickness = mm (10);
+bowden_trap_mount_thickness = mm (3);
+bowden_trap_wall_thickness = mm (2);
+bowden_trap_thread_tap_d = mm (8.8);
+bowden_trap_width = mm (10);
 
 // misc settings
 nut_tolerance = mm (0.1);
