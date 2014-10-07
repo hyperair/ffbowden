@@ -32,7 +32,7 @@ heatbreaktube_dia = M8;
 
 // offset from middle
 heatbreaktube_offset = [
-    6 * length_mm,
+    5 * length_mm,
     -alublock_dimensions[0] / 2 + 5 * length_mm
 ];
 
