@@ -25,7 +25,11 @@ module mk8_bowden_trap_mount (side="right") {
             }
 
             place_motor_screws ()
-            polyhole (d=M3, h=bowden_trap_mount_thickness + epsilon * 2);
+            polyhole (d=M3, h=overall_thickness + epsilon * 2);
+
+            translate ([0, 0, mm (2)])
+            place_motor_screws ()
+            polyhole (d=M3 * 2, overall_thickness + epsilon * 2);
 
             translate ([0, 0, -epsilon])
             cylinder (
