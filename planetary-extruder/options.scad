@@ -41,7 +41,10 @@ sun_bore = motor_shaft_d;
 sun_thickness = mm (10);
 sun_collar_thickness = M8;
 sun_hub_thickness = sun_thickness + sun_collar_thickness;
-sun_hub_d = sun_teeth * circular_pitch / PI * 0.8;
+sun_pitch_d = sun_teeth * circular_pitch / PI;
+sun_pitch_r = sun_pitch_d / 2;
+sun_outer_radius = sun_pitch_r + circular_pitch / PI;
+sun_hub_d = sun_outer_radius * 2;
 
 // carrier settings
 carrier_wall_thickness = mm (4);
