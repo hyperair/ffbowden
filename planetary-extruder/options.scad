@@ -103,7 +103,7 @@ filament_path_offset = [
     mm (7.3)                      //elevation
 ];
 bowden_trap_mount_thickness = mm (3);
-bowden_trap_wall_thickness = mm (2);
+bowden_trap_wall_thickness = mm (2.5);
 bowden_trap_thread_d = mm (9.7);
 bowden_trap_width = mm (10);
 
