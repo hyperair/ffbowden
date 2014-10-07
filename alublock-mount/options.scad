@@ -2,7 +2,7 @@ include <MCAD/units/metric.scad>
 include <MCAD/motors/stepper.scad>
 
 bowden_tube_diameter = M4;
-bowden_trap_height = 24 * length_mm;
+bowden_trap_height = 20 * length_mm;
 bowden_trap_screw_spacing = 15 * length_mm;
 bowden_trap_thickness = 2.5 * length_mm;
 bowden_trap_od = bowden_tube_diameter + bowden_trap_thickness * 2;
