@@ -43,8 +43,9 @@ sun_collar_thickness = M8;
 sun_hub_thickness = sun_thickness + sun_collar_thickness;
 sun_pitch_d = sun_teeth * circular_pitch / PI;
 sun_pitch_r = sun_pitch_d / 2;
-sun_outer_radius = sun_pitch_r + circular_pitch / PI;
-sun_hub_d = sun_outer_radius * 2;
+sun_outer_r = sun_pitch_r + circular_pitch / PI;
+sun_outer_d = sun_outer_r * 2;
+sun_hub_d = sun_outer_d;
 
 // carrier settings
 carrier_wall_thickness = mm (4);
