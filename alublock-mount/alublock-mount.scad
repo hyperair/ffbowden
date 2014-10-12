@@ -42,6 +42,9 @@ module alublock_mount (side="left")
     difference () {
         union () {
             basic_alublock_mount_shape ();
+            translate (hbtpos + [0, 0, alublock_dimensions[1]])
+            cylinder (d=pneumatic_wall_thickness * 2 + pneumatic_thread_dia,
+                h=pneumatic_thread_depth);
 
             if (side == "right")
             sideplate ();
@@ -55,11 +58,12 @@ module alublock_mount (side="left")
 
         // cooling tube hole
         translate (hbtpos)
-        polyhole (d=heatbreaktube_dia, h=100 * length_mm);
+        polyhole (d=pneumatic_thread_dia, h=100 * length_mm);
 
-        // bowden trap screwholes
-        translate (hbtpos)
-        bowden_trap_screwholes ();
+        // chop off extras that will hit the fan
+        translate ([0, -overall_depth, 0])
+        cube ([overall_width, overall_depth,
+                overall_height + pneumatic_thread_depth]);
     }
 
     module sideplate ()
@@ -107,8 +111,7 @@ module alublock_mount (side="left")
 }
 
 // left mount
-translate ([0, -2 * length_mm, overall_height])
-rotate (180, X)
+rotate (90, X)
 alublock_mount ("left");
 
 // right mount

@@ -1,6 +1,8 @@
 include <MCAD/units/metric.scad>
 include <MCAD/motors/stepper.scad>
 
+function mm (x) = length_mm (x);
+
 bowden_tube_diameter = M4;
 bowden_trap_height = 20 * length_mm;
 bowden_trap_screw_spacing = 15 * length_mm;
@@ -29,6 +31,10 @@ sideplate_height = 5 * length_mm;
 sideplate_z_offset_from_top = 18 * length_mm;
 
 heatbreaktube_dia = M8;
+pneumatic_thread_dia = mm (9.7);
+pneumatic_wall_thickness = mm (3); // wall thickness around the pneumatic thread
+                                   // holder
+pneumatic_thread_depth = mm (15);
 
 // offset from middle
 heatbreaktube_offset = [
